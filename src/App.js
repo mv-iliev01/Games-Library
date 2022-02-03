@@ -1,17 +1,24 @@
-import { useState,createElement } from "react";
+import { useState } from "react";
 
 import Header from "./components/Header";
 import Homepage from "./components/Homepage";
-import GameCatalog from "./components/CatalogPage"
-import CreatePage from "./components/CreatePage"
+import GameCatalog from "./components/CatalogPage";
+import CreatePage from "./components/CreatePage";
+import LoginPage from "./components/LoginPage";
+import RegisterPage from "./components/RegisterPage";
+import EditPage from "./components/EditPage";
 
 function App() {
     const [page, setPage] = useState('/home');
 
     const routes = {
+        '/Login': <LoginPage/>,
+        '/Register': <RegisterPage/>,
         '/home': <Homepage/>,
         '/games': <GameCatalog/>,
         '/create-game': <CreatePage/>,
+        '/edit': <EditPage/>,
+
 
     }
 
