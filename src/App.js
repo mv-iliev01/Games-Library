@@ -1,15 +1,32 @@
+import { useState,createElement } from "react";
+
 import Header from "./components/Header";
 import Homepage from "./components/Homepage";
+import GameCatalog from "./components/CatalogPage"
+import CreatePage from "./components/CreatePage"
 
 function App() {
-    return (
+    const [page, setPage] = useState('/home');
 
-        <div id="box">
-            <Header />
+    const routes = {
+        '/home': <Homepage/>,
+        '/games': <GameCatalog/>,
+        '/create-game': <CreatePage/>,
 
-            <main id="main-content">
-                <Homepage/>
-            </main>
+    }
+
+    const navigationChangeHandler = (path) => {
+        console.log(path);
+        setPage(path);
+    }
+
+    return ( <
+        div id = "box" >
+        <Header navigationChangeHandler = { navigationChangeHandler }/>
+
+        <main id = "main-content" >
+        { routes[page] || <h2>No Page Found!</h2> }
+        </main>
 
         </div>
     );
