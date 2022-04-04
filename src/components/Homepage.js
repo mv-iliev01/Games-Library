@@ -1,10 +1,19 @@
-const Homepage = ()=>
-{
-    return (
-        <section id="welcome-world">
+const Homepage = ({
+    navigationChangeHandler,
+    }) => {
+        const onMainClick = (e) => {
+            e.preventDefault();
+    
+            if (e.target.tagName == 'A') {
+                let url = new URL(e.target.href);
+                navigationChangeHandler(url.pathname);
+            }
+        };
 
+    return (
+        <section onClick={onMainClick} id="welcome-world">
                 <div className="welcome-message">
-                    <h2>ALL new games are</h2>
+                    <h2>You will find All New Games</h2>
                     <h3>Only in GamesPlay</h3>
                 </div>
                 <img src="./images/acreed-icon2.png" alt="hero" />
@@ -21,7 +30,7 @@ const Homepage = ()=>
                             <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
                         </div>
                         <div className="data-buttons">
-                            <a href="#" className="btn details-btn">Details</a>
+                            <a href="/gameone" className="btn details-btn">Details</a>
                         </div>
                     </div>
                     <div className="game">
@@ -33,7 +42,7 @@ const Homepage = ()=>
                             <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
                         </div>
                         <div className="data-buttons">
-                            <a href="#" className="btn details-btn">Details</a>
+                            <a href="/gametwo" className="btn details-btn">Details</a>
                         </div>
                     </div>
                     <div className="game">
@@ -45,11 +54,9 @@ const Homepage = ()=>
                             <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
                         </div>
                         <div className="data-buttons">
-                            <a href="#" className="btn details-btn">Details</a>
+                            <a href="/gamethree" className="btn details-btn">Details</a>
                         </div>
                     </div>
-
-                    <p className="no-articles">No games yet</p>
                 </div>
             </section>
     )
